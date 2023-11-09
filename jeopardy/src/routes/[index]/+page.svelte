@@ -8,11 +8,13 @@
   export let data: PageData;
 
   const answer = getAnswer(Number(data.index));
+  $: state = $gameState[answer.index];
   const shortUrl = `/short/${answer.filename}`;
   const fullUrl = `/full/${answer.filename}`;
   let shortVideo: HTMLMediaElement;
   let fullVideo: HTMLMediaElement;
   let startedPlayingFull = false;
+  let revealed = false;
 
   onMount(() => {
     shortVideo = document.getElementById('short') as HTMLMediaElement;
@@ -30,12 +32,12 @@
 
   function revealFull() {
     if (startedPlayingFull) {
-      fullVideo.style.display = 'block';
+      revealed = true;
     }
   }
 
   function playPause() {
-    if (fullVideo.style.display === 'block') {
+    if (revealed) {
       if (fullVideo.paused) {
         fullVideo.play();
       } else {
@@ -66,19 +68,27 @@
     });
   }
 
+  function playAndReveal() {
+    playFull();
+    revealFull();
+  }
+
   function guess() {
     if (startedPlayingFull) {
       updateGameState(AnswerState.COMPLETED_GUESSED);
     } else {
       updateGameState(AnswerState.COMPLETED_GUESSED_BONUS);
     }
+    playAndReveal();
   }
 
   function fail() {
     updateGameState(AnswerState.COMPLETED_FAILED);
+    playAndReveal();
   }
 
   function handleKeypress(event: KeyboardEvent) {
+    console.log(event.key);
     switch (event.key) {
       case 'Escape':
         goto('/');
@@ -105,47 +115,111 @@
 </script>
 
 <style lang="scss">
+  .bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.5;
+
+    &.completed-failed {
+      background-color: rgb(73, 20, 20);
+    }
+
+    &.completed-guessed {
+      background-color: rgb(20, 73, 31);
+    }
+
+    &.completed-guessed-bonus {
+      background-color: rgb(73, 56, 20);
+    }
+  }
+
   .title {
     display: flex;
     justify-content: center;
     align-items: baseline;
-    margin-top: 70px;
 
-    > * {
-      display: inline;
+    &.category-title {
+      margin-top: 80px;
+
+      > * {
+        display: inline;
+        margin: 0;
+      }
+
+      .category {
+        font-size: 48px;
+        font-weight: 500;
+      }
+
+      span {
+        font-size: 32px;
+        margin: 0 20px;
+      }
+
+      .points {
+        font-weight: 400;
+        font-size: 32px;
+      }
     }
 
-    .category {
-      font-size: 48px;
-      font-weight: 500;
-    }
+    &.series-title {
+      display: none;
+      margin-top: 100px;
 
-    span {
-      font-size: 32px;
-      margin: 0 20px;
-    }
+      &.revealed {
+        display: flex;
+      }
 
-    .points {
-      font-weight: 400;
-      font-size: 32px;
+      .series {
+        margin: 0;
+        font-weight: 400;
+        font-size: 32px;
+      }
+    }
+  }
+
+  .video-mask {
+    display: none;
+    margin: 24px auto 0;
+    border-radius: 24px;
+    overflow: hidden;
+    width: 1280px;
+    height: 720px;
+    box-shadow: 0 0 10px 5px rgba(25, 25, 25, 0.71);
+
+    &.revealed {
+      display: block;
     }
   }
 
   video {
-    margin: auto;
-    display: none;
+    width: 100%;
   }
 </style>
 
 <svelte:window on:keyup={handleKeypress} />
 
-<div class="title">
+<div class="bg {state}"></div>
+
+<div class="category-title title">
   <h2 class="category">{getCategoryTitle(answer.category)}</h2>
   <span>-</span>
-  <h3 class="points">{answer.points}</h3>
+  <h2 class="points">{answer.points}</h2>
 </div>
 
-<!-- svelte-ignore a11y-media-has-caption -->
-<video id="short" src={shortUrl}></video>
-<!-- svelte-ignore a11y-media-has-caption -->
-<video id="full" src={fullUrl} controls></video>
+<div class="series-title title" class:revealed>
+  <h3 class="series">{answer.series}</h3>
+</div>
+
+<div class="video-mask" class:revealed>
+  <!-- svelte-ignore a11y-media-has-caption -->
+  <video id="short" src={shortUrl} hidden></video>
+  <!-- svelte-ignore a11y-media-has-caption -->
+  <video id="full" src={fullUrl} controls></video>
+</div>

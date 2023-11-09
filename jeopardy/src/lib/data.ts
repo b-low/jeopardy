@@ -196,8 +196,7 @@ export type Answer = AnswerDefinition & {
   points: number;
   example?: boolean;
 };
-export const NUM_ANSWERS = 30;
-let grid: Answer[] = Array(NUM_ANSWERS);
+let grid: Answer[] = Array(6 * 5);
 Object.entries(answers).forEach(([category, categoryAnswers], categoryIndex) => {
   categoryAnswers.forEach((answer, answerIndex) => {
     let index = answerIndex * 6 + categoryIndex;
@@ -226,6 +225,8 @@ export function getAnswer(index: number) {
   }
   return grid[index];
 }
+
+export const NUM_ANSWERS = grid.length + 1; // include example for state storage
 
 export enum AnswerState {
   UNCOMPLETED = 'uncompleted',

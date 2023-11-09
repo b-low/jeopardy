@@ -31,6 +31,10 @@
       background-color: rgb(73, 20, 20);
     }
 
+    &.completed-guessed {
+      background-color: transparent;
+    }
+
     &.completed-guessed-bonus {
       background-color: rgb(73, 56, 20);
     }
