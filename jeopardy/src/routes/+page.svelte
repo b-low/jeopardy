@@ -1,6 +1,17 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
   import { categories, getCategoryTitle, grid } from '$lib/data';
   import AnswerTile from './AnswerTile.svelte';
+
+  function handleKeypress(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'e':
+        goto('/-1');
+        break;
+      default:
+        break;
+    }
+  }
 </script>
 
 <style lang="scss">
@@ -37,6 +48,8 @@
     }
   }
 </style>
+
+<svelte:window on:keyup={handleKeypress} />
 
 <div class="categories grid">
   {#each categories as category}

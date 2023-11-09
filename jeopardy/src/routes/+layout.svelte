@@ -1,6 +1,13 @@
+<script lang="ts">
+  import { onNavigate } from '$app/navigation';
+
+  // onNavigate((navigation) => {
+  //   return new Promise((res) => setTimeout(res, 1000));
+  // });
+</script>
+
 <style lang="scss">
   :global(body) {
-    // background-color: rgb(25, 25, 28);
     color: rgb(229, 229, 229);
     font-family: 'Lexend Deca', sans-serif;
     background-color: #09111f;

@@ -1,4 +1,4 @@
-export enum Category {
+enum Category {
   I,
   NO,
   RI,
@@ -7,7 +7,7 @@ export enum Category {
   SE
 }
 
-export const categories = [
+export const categories: Category[] = [
   Category.I,
   Category.NO,
   Category.RI,
@@ -16,7 +16,7 @@ export const categories = [
   Category.SE
 ];
 
-export function getCategoryTitle(category: Category): string {
+export function getCategoryTitle(category: Category | string): string {
   switch (category) {
     case Category.I:
       return 'In another world with my Pixel 8 Pro on sale now for $999';
@@ -30,6 +30,10 @@ export function getCategoryTitle(category: Category): string {
       return 'Narcotics';
     case Category.SE:
       return 'Seasonear worm';
+    case 'EXAMPLE':
+      return 'Bingo free space';
+    default:
+      return '';
   }
 }
 
@@ -188,8 +192,9 @@ const answers: {
 
 export type Answer = AnswerDefinition & {
   index: number;
-  category: Category;
+  category: Category | string;
   points: number;
+  example?: boolean;
 };
 export const NUM_ANSWERS = 30;
 let grid: Answer[] = Array(NUM_ANSWERS);
@@ -205,3 +210,19 @@ Object.entries(answers).forEach(([category, categoryAnswers], categoryIndex) => 
   });
 });
 export { grid };
+
+const example: Answer = {
+  series: 'Rascal Does Not Dream of Bunny Girl Senpai',
+  filename: 'bgs_op.mp4',
+  index: -1,
+  category: 'EXAMPLE',
+  points: 100,
+  example: true
+};
+
+export function getAnswer(index: number) {
+  if (index === -1) {
+    return example;
+  }
+  return grid[index];
+}

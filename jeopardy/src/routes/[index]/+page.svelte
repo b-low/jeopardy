@@ -1,12 +1,12 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import { categories, getCategoryTitle, grid } from '$lib/data';
+  import { getAnswer, getCategoryTitle } from '$lib/data';
   import { onMount } from 'svelte';
   import type { PageData } from './$types';
 
   export let data: PageData;
 
-  const answer = grid[Number(data.index)];
+  const answer = getAnswer(Number(data.index));
   const shortUrl = `/short/${answer.filename}`;
   const fullUrl = `/full/${answer.filename}`;
   let shortVideo: HTMLMediaElement;
@@ -28,7 +28,9 @@
   }
 
   function revealFull() {
-    fullVideo.style.display = 'block';
+    if (startedPlayingFull) {
+      fullVideo.style.display = 'block';
+    }
   }
 
   function playPause() {
@@ -57,7 +59,6 @@
   }
 
   function handleKeypress(event: KeyboardEvent) {
-    console.log(event.key);
     switch (event.key) {
       case 'Escape':
         goto('/');
@@ -68,7 +69,7 @@
       case 'Enter':
         playFull();
         break;
-      case 'R':
+      case 'S':
         revealFull();
         break;
       default:
