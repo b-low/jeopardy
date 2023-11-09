@@ -226,3 +226,10 @@ export function getAnswer(index: number) {
   }
   return grid[index];
 }
+
+export enum AnswerState {
+  UNCOMPLETED = 'uncompleted',
+  COMPLETED_FAILED = 'completed-failed',
+  COMPLETED_GUESSED = 'completed-guessed',
+  COMPLETED_GUESSED_BONUS = 'completed-guessed-bonus'
+}

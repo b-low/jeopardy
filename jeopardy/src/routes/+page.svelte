@@ -1,12 +1,19 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import { categories, getCategoryTitle, grid } from '$lib/data';
+  import { AnswerState, NUM_ANSWERS, categories, getCategoryTitle, grid } from '$lib/data';
+  import { gameState } from '$lib/stores';
   import AnswerTile from './AnswerTile.svelte';
 
   function handleKeypress(event: KeyboardEvent) {
+    console.log(event);
     switch (event.key) {
       case 'e':
         goto('/-1');
+        break;
+      case 'R':
+        if (confirm('Reset?')) {
+          gameState.set(Array(NUM_ANSWERS).fill(AnswerState.UNCOMPLETED));
+        }
         break;
       default:
         break;

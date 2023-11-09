@@ -1,8 +1,9 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import { getAnswer, getCategoryTitle } from '$lib/data';
+  import { AnswerState, getAnswer, getCategoryTitle } from '$lib/data';
   import { onMount } from 'svelte';
   import type { PageData } from './$types';
+  import { gameState } from '$lib/stores';
 
   export let data: PageData;
 
@@ -58,6 +59,25 @@
     }
   }
 
+  function updateGameState(state: AnswerState) {
+    gameState.update((gameState) => {
+      gameState[answer.index] = state;
+      return gameState;
+    });
+  }
+
+  function guess() {
+    if (startedPlayingFull) {
+      updateGameState(AnswerState.COMPLETED_GUESSED);
+    } else {
+      updateGameState(AnswerState.COMPLETED_GUESSED_BONUS);
+    }
+  }
+
+  function fail() {
+    updateGameState(AnswerState.COMPLETED_FAILED);
+  }
+
   function handleKeypress(event: KeyboardEvent) {
     switch (event.key) {
       case 'Escape':
@@ -71,6 +91,12 @@
         break;
       case 'S':
         revealFull();
+        break;
+      case 'G':
+        guess();
+        break;
+      case 'F':
+        fail();
         break;
       default:
         break;
@@ -107,13 +133,6 @@
 
   video {
     margin: auto;
-  }
-
-  #short {
-    display: none;
-  }
-
-  #full {
     display: none;
   }
 </style>

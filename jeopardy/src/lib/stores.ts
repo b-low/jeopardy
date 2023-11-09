@@ -1,11 +1,8 @@
 import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
-import { NUM_ANSWERS, grid } from './data';
+import { AnswerState, NUM_ANSWERS } from './data';
 
-interface AnswerState {
-  completed: boolean;
-}
-const gameState = writable<AnswerState[]>(Array(NUM_ANSWERS).fill({ completed: false }));
+const gameState = writable<AnswerState[]>(Array(NUM_ANSWERS).fill(AnswerState.UNCOMPLETED));
 
 // Run in the client; don't let svelte compile it out
 if (browser) {
@@ -16,7 +13,7 @@ if (browser) {
   if (savedGameState !== null) {
     initialGameState = JSON.parse(savedGameState);
   } else {
-    initialGameState = Array(NUM_ANSWERS).fill({ completed: false });
+    initialGameState = Array(NUM_ANSWERS).fill(AnswerState.UNCOMPLETED);
   }
   gameState.set(initialGameState);
 
@@ -24,3 +21,5 @@ if (browser) {
     localStorage.setItem(GAME_STATE_KEY, JSON.stringify(state));
   });
 }
+
+export { gameState };
