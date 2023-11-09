@@ -23,13 +23,13 @@ export function getCategoryTitle(category: Category): string {
     case Category.NO:
       return "Don't judge an anime by its opening covers";
     case Category.RI:
-      return 'Rizz is so stupid I call it Deen/stay night';
+      return 'Rizz is so stupid they call it Deen/stay night';
     case Category.MI:
       return 'Microplastic memories';
     case Category.NA:
       return 'Narcotics';
     case Category.SE:
-      return 'Seasonal X';
+      return 'Seasonear worm';
   }
 }
 
@@ -76,21 +76,20 @@ const answers: {
       filename: 'ao.mp4'
     },
     {
-      series: 'Rent-a-Girlfriend',
-      filename: 'rag_ed.mp4',
-      ed: true
-    },
-    {
       series: 'Domestic Girlfriend',
       filename: 'domestic.mp4'
     },
     {
-      series: 'Black Summoner',
-      filename: 'summoner.mp4'
+      series: "Shikimori's Not Just a Cutie",
+      filename: 'shikimori.mp4'
     },
     {
       series: 'ASSASSINS PRIDE',
       filename: 'assassins.mp4'
+    },
+    {
+      series: 'Black Summoner',
+      filename: 'summoner.mp4'
     }
   ],
   [Category.RI]: [

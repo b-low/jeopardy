@@ -21,4 +21,4 @@
   }
 </style>
 
-<a class="answer tile" href="{answer.category}/{answer.points}">{answer.points}</a>
+<a class="answer tile" href="/{answer.index}">{answer.points}</a>

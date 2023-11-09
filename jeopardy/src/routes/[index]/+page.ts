@@ -2,9 +2,8 @@ import type { Load } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageLoad} */
 export const load: Load = ({ params }) => {
-  const { categoryIndex, points } = params;
+  const { index } = params;
   return {
-    categoryIndex: categoryIndex,
-    points: points
+    index: index
   };
 };
