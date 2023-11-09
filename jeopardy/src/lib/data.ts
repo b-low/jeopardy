@@ -1,10 +1,36 @@
 export enum Category {
-  I = 'i',
-  NO = 'no',
-  RI = 'ri',
-  MI = 'mi',
-  NA = 'na',
-  SE = 'se'
+  I,
+  NO,
+  RI,
+  MI,
+  NA,
+  SE
+}
+
+export const categories = [
+  Category.I,
+  Category.NO,
+  Category.RI,
+  Category.MI,
+  Category.NA,
+  Category.SE
+];
+
+export function getCategoryTitle(category: Category): string {
+  switch (category) {
+    case Category.I:
+      return 'In another world with my Pixel 8 Pro on sale now for $999';
+    case Category.NO:
+      return "Don't judge an anime by its opening covers";
+    case Category.RI:
+      return 'Rizz is so stupid I call it Deen/stay night';
+    case Category.MI:
+      return 'Microplastic memories';
+    case Category.NA:
+      return 'Narcotics';
+    case Category.SE:
+      return 'Seasonal X';
+  }
 }
 
 interface AnswerDefinition {
@@ -162,18 +188,21 @@ const answers: {
 };
 
 export type Answer = AnswerDefinition & {
+  index: number;
   category: Category;
-  score: number;
+  points: number;
 };
-let grid: Answer[] = Array(30);
+export const NUM_ANSWERS = 30;
+let grid: Answer[] = Array(NUM_ANSWERS);
 Object.entries(answers).forEach(([category, categoryAnswers], categoryIndex) => {
   categoryAnswers.forEach((answer, answerIndex) => {
-    grid[answerIndex * 6 + categoryIndex] = {
+    let index = answerIndex * 6 + categoryIndex;
+    grid[index] = {
       ...answer,
-      category: category as Category,
-      score: answerIndex * 100 + 100
+      index: index,
+      category: categories[categoryIndex],
+      points: answerIndex * 100 + 100
     };
   });
 });
-
 export { grid };

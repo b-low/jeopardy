@@ -6,6 +6,7 @@
 
 <style lang="scss">
   .answer {
+    all: unset;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,4 +21,4 @@
   }
 </style>
 
-<div class="answer tile">{answer.score}</div>
+<a class="answer tile" href="{answer.category}/{answer.points}">{answer.points}</a>
