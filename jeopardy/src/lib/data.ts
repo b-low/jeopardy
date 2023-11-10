@@ -19,17 +19,17 @@ export const categories: Category[] = [
 export function getCategoryTitle(category: Category | string): string {
   switch (category) {
     case Category.I:
-      return 'In another world with my Pixel 8 Pro on sale now for $999';
+      return '<span class="inori">I</span>n another world with my Pixel 8 Pro on sale now for $999';
     case Category.NO:
       return "Don't judge an anime by its opening covers";
     case Category.RI:
-      return 'Rizz is so stupid they call it Deen/stay night';
+      return '<span class="inori">Ri</span>zz is so stupid they call it Deen/stay night';
     case Category.MI:
-      return 'Microplastic memories';
+      return '<span class="inori">Mi</span>croplastic memories';
     case Category.NA:
-      return 'Narcotics';
+      return '<span class="inori">Na</span>rcotics';
     case Category.SE:
-      return 'Seasonear worm';
+      return '<span class="inori">Se</span>asonear worm';
     case 'EXAMPLE':
       return 'Bingo free space';
     default:

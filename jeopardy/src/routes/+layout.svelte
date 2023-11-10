@@ -1,9 +1,20 @@
 <script lang="ts">
-  import { onNavigate } from '$app/navigation';
+  import { goto } from '$app/navigation';
 
   // onNavigate((navigation) => {
   //   return new Promise((res) => setTimeout(res, 1000));
   // });
+
+  function handleKeypress(event: KeyboardEvent) {
+    console.log(event);
+    switch (event.key) {
+      case 'Escape':
+        goto('/');
+        break;
+      default:
+        break;
+    }
+  }
 </script>
 
 <style lang="scss">
@@ -20,5 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </svelte:head>
+
+<svelte:window on:keyup={handleKeypress} />
 
 <slot />

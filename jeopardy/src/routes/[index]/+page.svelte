@@ -95,9 +95,6 @@
   function handleKeypress(event: KeyboardEvent) {
     console.log(event.key);
     switch (event.key) {
-      case 'Escape':
-        goto('/');
-        break;
       case ' ':
         playPause();
         break;
@@ -249,7 +246,7 @@
     {#if answer.ed}
       <span class="ed-indicator">ED</span>
     {/if}
-    <h2 class="category">{getCategoryTitle(answer.category)}</h2>
+    <h2 class="category">{@html getCategoryTitle(answer.category)}</h2>
     <span class="separator">-</span>
     <h2 class="points">{answer.points}</h2>
     {#if bonusAvailable}

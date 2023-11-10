@@ -4,16 +4,24 @@
   import { gameState } from '$lib/stores';
   import AnswerTile from './AnswerTile.svelte';
 
+  let inoriRevealed = false;
+
   function handleKeypress(event: KeyboardEvent) {
     console.log(event);
     switch (event.key) {
       case 'e':
         goto('/-1');
         break;
+      case '\\':
+        goto('/final');
+        break;
       case 'R':
         if (confirm('Reset?')) {
           gameState.set(Array(NUM_ANSWERS).fill(AnswerState.UNCOMPLETED));
         }
+        break;
+      case 'I':
+        inoriRevealed = true;
         break;
       default:
         break;
@@ -54,6 +62,15 @@
       }
     }
   }
+
+  :global(.inori) {
+    margin-top: 40px;
+    transition: color 0.5s;
+
+    .inoriRevealed > & {
+      color: rgb(207, 36, 36);
+    }
+  }
 </style>
 
 <svelte:window on:keyup={handleKeypress} />
@@ -61,7 +78,7 @@
 <div class="categories grid">
   {#each categories as category}
     <div class="category tile">
-      <h2>{getCategoryTitle(category)}</h2>
+      <h2 class:inoriRevealed>{@html getCategoryTitle(category)}</h2>
     </div>
   {/each}
 </div>
