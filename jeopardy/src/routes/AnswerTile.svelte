@@ -21,6 +21,10 @@
     font-size: 40px;
     font-weight: 700;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &.completed-failed,
     &.completed-guessed,
     &.completed-guessed-bonus {

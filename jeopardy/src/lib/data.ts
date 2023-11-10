@@ -35,6 +35,24 @@ export function getCategoryTitle(category: Category | string): string {
     default:
       return '';
   }
+  // switch (category) {
+  //   case Category.I:
+  //     return 'Category 1';
+  //   case Category.NO:
+  //     return 'Category 2';
+  //   case Category.RI:
+  //     return 'Category 3';
+  //   case Category.MI:
+  //     return 'Category 4';
+  //   case Category.NA:
+  //     return 'Category 5';
+  //   case Category.SE:
+  //     return 'Category 6';
+  //   case 'EXAMPLE':
+  //     return 'Bingo free space';
+  //   default:
+  //     return '';
+  // }
 }
 
 interface AnswerDefinition {
@@ -106,13 +124,13 @@ const answers: {
       filename: 'villainess.mp4'
     },
     {
-      series: 'Is It Wrong to Try to Pick Up Girls in a Dungeon? IV Part 2',
-      filename: 'dungeon.mp4'
-    },
-    {
       series: 'My Love Story with Yamada-kun at Lv999',
       filename: 'yamada_ed.mp4',
       ed: true
+    },
+    {
+      series: 'Is It Wrong to Try to Pick Up Girls in a Dungeon? IV Part 2',
+      filename: 'dungeon.mp4'
     },
     {
       series: 'Princess Connect! Re:Dive Season 2',
@@ -126,16 +144,16 @@ const answers: {
       ed: true
     },
     {
-      series: 'Is the Order a Rabbit?',
-      filename: 'rabbit.mp4'
-    },
-    {
       series: "Girls' Last Tour",
       filename: 'tour_op.mp4'
     },
     {
       series: 'Aharen-san wa Hakarenai',
       filename: 'aharen.mp4'
+    },
+    {
+      series: 'Is the Order a Rabbit?',
+      filename: 'rabbit.mp4'
     },
     {
       series: 'Actually, I Am',
@@ -171,21 +189,21 @@ const answers: {
       filename: 'april.mp4'
     },
     {
+      series: "Masamune-kun's Revenge",
+      filename: 'masamune.mp4'
+    },
+    {
       series: 'The Case Study of Vanitas',
       filename: 'vanitas.mp4'
     },
     {
-      series: "Masamune-kun's Revenge",
-      filename: 'masamune.mp4'
+      series: 'A Place Further Than the Universe',
+      filename: 'universe.mp4'
     },
     {
       series: 'Dead Mount Death Play',
       filename: 'dead_ed.mp4',
       ed: true
-    },
-    {
-      series: 'A Place Further Than the Universe',
-      filename: 'universe.mp4'
     }
   ]
 };

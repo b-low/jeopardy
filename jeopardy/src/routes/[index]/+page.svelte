@@ -15,10 +15,15 @@
   let fullVideo: HTMLMediaElement;
   let startedPlayingFull = false;
   let revealed = false;
+  $: bonusAvailable =
+    state === AnswerState.COMPLETED_GUESSED_BONUS ||
+    (AnswerState.UNCOMPLETED && !startedPlayingFull);
 
   onMount(() => {
     shortVideo = document.getElementById('short') as HTMLMediaElement;
+    shortVideo.volume = 0.05;
     fullVideo = document.getElementById('full') as HTMLMediaElement;
+    fullVideo.volume = 0.05;
   });
 
   function playFull() {
@@ -115,6 +120,10 @@
 </script>
 
 <style lang="scss">
+  body {
+    text-align: center;
+  }
+
   .bg {
     position: absolute;
     width: 100%;
@@ -139,12 +148,17 @@
     }
   }
 
+  .title-container {
+    text-align: center;
+  }
+
   .title {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: baseline;
 
     &.category-title {
+      position: relative;
       margin-top: 80px;
 
       > * {
@@ -157,14 +171,37 @@
         font-weight: 500;
       }
 
-      span {
-        font-size: 32px;
+      .separator {
         margin: 0 20px;
+        font-size: 36px;
       }
 
       .points {
+        font-size: 36px;
         font-weight: 400;
-        font-size: 32px;
+      }
+
+      .bonus-indicator {
+        position: absolute;
+        right: -30px;
+        top: -10px;
+        font-size: 28px;
+        font-weight: 700;
+        color: rgb(221, 178, 86);
+        text-shadow: 1px 1px 2px rgb(157, 120, 40);
+        transform: rotate(30deg);
+      }
+
+      .ed-indicator {
+        position: absolute;
+        bottom: 12px;
+        left: -52px;
+        padding: 2px 8px;
+        font-size: 18px;
+        font-weight: 700;
+        font-variant: small-caps;
+        background-color: rgb(154, 67, 198);
+        border-radius: 8px;
       }
     }
 
@@ -207,14 +244,22 @@
 
 <div class="bg {state}"></div>
 
-<div class="category-title title">
-  <h2 class="category">{getCategoryTitle(answer.category)}</h2>
-  <span>-</span>
-  <h2 class="points">{answer.points}</h2>
-</div>
+<div class="title-container">
+  <div class="category-title title">
+    {#if answer.ed}
+      <span class="ed-indicator">ED</span>
+    {/if}
+    <h2 class="category">{getCategoryTitle(answer.category)}</h2>
+    <span class="separator">-</span>
+    <h2 class="points">{answer.points}</h2>
+    {#if bonusAvailable}
+      <span class="bonus-indicator">x2</span>
+    {/if}
+  </div>
 
-<div class="series-title title" class:revealed>
-  <h3 class="series">{answer.series}</h3>
+  <div class="series-title title" class:revealed>
+    <h3 class="series">{answer.series}</h3>
+  </div>
 </div>
 
 <div class="video-mask" class:revealed>
