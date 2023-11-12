@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
   import { AnswerState, getAnswer, getCategoryTitle } from '$lib/data';
   import { onMount } from 'svelte';
   import type { PageData } from './$types';
@@ -20,7 +19,8 @@
     (AnswerState.UNCOMPLETED && !startedPlayingFull);
 
   onMount(() => {
-    const VOLUME = 0.05;
+    // const VOLUME = 0.05;
+    const VOLUME = 1;
     shortVideo = document.getElementById('short') as HTMLMediaElement;
     shortVideo.volume = VOLUME;
     fullVideo = document.getElementById('full') as HTMLMediaElement;
@@ -93,8 +93,10 @@
     playAndReveal();
   }
 
-  function handleKeypress(event: KeyboardEvent) {
-    console.log(event.key);
+  function handleKeyUp(event: KeyboardEvent) {
+    if (event.target && (event.target as any).tagName !== 'BODY') {
+      return;
+    }
     switch (event.key) {
       case ' ':
         playPause();
@@ -113,6 +115,12 @@
         break;
       default:
         break;
+    }
+  }
+
+  function handleKeyDown(event: KeyboardEvent) {
+    if (event.target && (event.target as any).tagName === 'BODY' && event.key === ' ') {
+      event.preventDefault();
     }
   }
 </script>
@@ -238,7 +246,7 @@
   }
 </style>
 
-<svelte:window on:keyup={handleKeypress} />
+<svelte:window on:keyup={handleKeyUp} on:keydown={handleKeyDown} />
 
 <div class="bg {state}"></div>
 

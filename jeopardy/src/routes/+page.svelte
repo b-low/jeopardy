@@ -1,13 +1,15 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { AnswerState, NUM_ANSWERS, categories, getCategoryTitle, grid } from '$lib/data';
-  import { gameState } from '$lib/stores';
+  import { gameState, scores } from '$lib/stores';
   import AnswerTile from './AnswerTile.svelte';
 
   let inoriRevealed = false;
 
-  function handleKeypress(event: KeyboardEvent) {
-    console.log(event);
+  function handleKeyUp(event: KeyboardEvent) {
+    if (event.target && (event.target as any).tagName !== 'BODY') {
+      return;
+    }
     switch (event.key) {
       case 'e':
         goto('/-1');
@@ -18,6 +20,7 @@
       case 'R':
         if (confirm('Reset?')) {
           gameState.set(Array(NUM_ANSWERS).fill(AnswerState.UNCOMPLETED));
+          scores.set('');
         }
         break;
       case 'I':
@@ -73,7 +76,7 @@
   }
 </style>
 
-<svelte:window on:keyup={handleKeypress} />
+<svelte:window on:keyup={handleKeyUp} />
 
 <div class="categories grid">
   {#each categories as category}

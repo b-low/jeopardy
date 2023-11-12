@@ -1,12 +1,15 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
+  import Scores from '$lib/Scores.svelte';
 
   // onNavigate((navigation) => {
   //   return new Promise((res) => setTimeout(res, 1000));
   // });
 
-  function handleKeypress(event: KeyboardEvent) {
-    console.log(event);
+  function handleKeyUp(event: KeyboardEvent) {
+    if (event.target && (event.target as any).tagName !== 'BODY') {
+      return;
+    }
     switch (event.key) {
       case 'Escape':
         goto('/');
@@ -22,6 +25,11 @@
     color: rgb(229, 229, 229);
     font-family: 'Lexend Deca', sans-serif;
     background-color: #09111f;
+    margin: 0;
+  }
+
+  .content {
+    height: 100vh;
   }
 </style>
 
@@ -32,6 +40,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </svelte:head>
 
-<svelte:window on:keyup={handleKeypress} />
+<svelte:window on:keyup={handleKeyUp} />
 
-<slot />
+<div class="content">
+  <slot />
+</div>
+
+<Scores />
