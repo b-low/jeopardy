@@ -16,6 +16,7 @@
       min-height: 600px;
       white-space: pre-wrap;
       outline: none;
+      line-height: 1.4;
     }
   }
 </style>

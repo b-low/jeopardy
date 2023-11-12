@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { AnswerState, NUM_ANSWERS, categories, getCategoryTitle, grid } from '$lib/data';
-  import { gameState, scores } from '$lib/stores';
+  import { categoriesRevealed, gameState, scores } from '$lib/stores';
   import AnswerTile from './AnswerTile.svelte';
 
   let inoriRevealed = false;
@@ -11,6 +11,9 @@
       return;
     }
     switch (event.key) {
+      case 'c':
+        categoriesRevealed.set(!$categoriesRevealed);
+        break;
       case 'e':
         goto('/-1');
         break;
@@ -21,10 +24,11 @@
         if (confirm('Reset?')) {
           gameState.set(Array(NUM_ANSWERS).fill(AnswerState.UNCOMPLETED));
           scores.set('');
+          categoriesRevealed.set(false);
         }
         break;
       case 'I':
-        inoriRevealed = true;
+        inoriRevealed = !inoriRevealed;
         break;
       default:
         break;
@@ -79,9 +83,15 @@
 <svelte:window on:keyup={handleKeyUp} />
 
 <div class="categories grid">
-  {#each categories as category}
+  {#each categories as category, i}
     <div class="category tile">
-      <h2 class:inoriRevealed>{@html getCategoryTitle(category)}</h2>
+      <h2 class:inoriRevealed>
+        {#if $categoriesRevealed}
+          {@html getCategoryTitle(category)}
+        {:else}
+          Category {i + 1}
+        {/if}
+      </h2>
     </div>
   {/each}
 </div>

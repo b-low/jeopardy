@@ -4,6 +4,7 @@ import { AnswerState, NUM_ANSWERS } from './data';
 
 const gameState = writable<AnswerState[]>(Array(NUM_ANSWERS).fill(AnswerState.UNCOMPLETED));
 const scores = writable<string>('');
+const categoriesRevealed = writable<boolean>(false);
 
 // Run in the client; don't let svelte compile it out
 if (browser) {
@@ -16,8 +17,8 @@ if (browser) {
     initialGameState = Array(NUM_ANSWERS).fill(AnswerState.UNCOMPLETED);
   }
   gameState.set(initialGameState);
-  gameState.subscribe((state) => {
-    localStorage.setItem(GAME_STATE_KEY, JSON.stringify(state));
+  gameState.subscribe((v) => {
+    localStorage.setItem(GAME_STATE_KEY, JSON.stringify(v));
   });
 
   const SCORES_KEY = 'scores';
@@ -29,9 +30,17 @@ if (browser) {
     initialScores = '';
   }
   scores.set(initialScores);
-  scores.subscribe((s) => {
-    localStorage.setItem(SCORES_KEY, s);
+  scores.subscribe((v) => {
+    localStorage.setItem(SCORES_KEY, v);
+  });
+
+  const CATEGORIES_REVEALED_KEY = 'categoriesRevealed';
+  let savedCategoriesRevealed = window.localStorage.getItem(CATEGORIES_REVEALED_KEY);
+  let initialCategoriesRevealed = savedCategoriesRevealed === 'true';
+  categoriesRevealed.set(initialCategoriesRevealed);
+  categoriesRevealed.subscribe((v) => {
+    localStorage.setItem(CATEGORIES_REVEALED_KEY, v ? 'true' : 'false');
   });
 }
 
-export { gameState, scores };
+export { gameState, scores, categoriesRevealed };
