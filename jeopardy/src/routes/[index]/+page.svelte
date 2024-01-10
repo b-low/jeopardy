@@ -19,8 +19,8 @@
     (AnswerState.UNCOMPLETED && !startedPlayingFull);
 
   onMount(() => {
-    // const VOLUME = 0.05;
-    const VOLUME = 1;
+    const VOLUME = 0.2;
+    // const VOLUME = 1;
     shortVideo = document.getElementById('short') as HTMLMediaElement;
     shortVideo.volume = VOLUME;
     fullVideo = document.getElementById('full') as HTMLMediaElement;
