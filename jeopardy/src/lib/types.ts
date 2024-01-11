@@ -18,9 +18,10 @@ export const answerCategories: AnswerCategory[] = [
 export type Category = AnswerCategory | 'EXAMPLE';
 
 export enum SongSource {
-  OPENING,
-  ENDING,
-  MOVIE
+  OPENING = 'OP',
+  ENDING = 'ED',
+  MOVIE = 'MOVIE',
+  OVA = 'OVA'
 }
 
 export interface AnswerDefinition {

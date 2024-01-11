@@ -254,10 +254,8 @@
 
 <div class="title-container">
   <div class="category-title title">
-    {#if answer.source === SongSource.ENDING}
-      <span class="source-indicator">ED</span>
-    {:else if answer.source === SongSource.MOVIE}
-      <span class="source-indicator">MOVIE</span>
+    {#if answer.source && answer.source !== SongSource.OPENING}
+      <span class="source-indicator">{answer.source}</span>
     {/if}
     <h2 class="category">{@html getCategoryTitle(answer.category)}</h2>
     <span class="separator">-</span>
