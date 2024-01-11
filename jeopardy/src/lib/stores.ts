@@ -1,6 +1,7 @@
 import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
-import { AnswerState, NUM_ANSWERS } from './data';
+import { NUM_ANSWERS } from './data';
+import { AnswerState } from './types';
 
 const gameState = writable<AnswerState[]>(Array(NUM_ANSWERS).fill(AnswerState.UNCOMPLETED));
 const scores = writable<string>('');

@@ -1,22 +1,10 @@
-enum AnswerCategory {
-  CATEGORY_1,
-  CATEGORY_2,
-  CATEGORY_3,
-  CATEGORY_4,
-  CATEGORY_5,
-  CATEGORY_6
-}
-
-type Category = AnswerCategory | 'EXAMPLE';
-
-export const answerCategories: AnswerCategory[] = [
-  AnswerCategory.CATEGORY_1,
-  AnswerCategory.CATEGORY_2,
-  AnswerCategory.CATEGORY_3,
-  AnswerCategory.CATEGORY_4,
-  AnswerCategory.CATEGORY_5,
-  AnswerCategory.CATEGORY_6
-];
+import {
+  AnswerCategory,
+  type Answer,
+  type AnswerDefinition,
+  type Category,
+  answerCategories
+} from './types';
 
 export function getCategoryTitle(category: Category): string {
   switch (category) {
@@ -39,11 +27,6 @@ export function getCategoryTitle(category: Category): string {
   }
 }
 
-interface AnswerDefinition {
-  series: string;
-  filename: string;
-  ed?: boolean;
-}
 const answers: {
   [key in AnswerCategory]: [
     AnswerDefinition,
@@ -187,12 +170,17 @@ const answers: {
   ]
 };
 
-export type Answer = AnswerDefinition & {
-  index: number;
-  category: Category;
-  points: number;
-  example?: boolean;
+const example: Answer = {
+  series: 'Example Series',
+  filename: 'example.mp4',
+  index: -1,
+  category: 'EXAMPLE',
+  points: 100,
+  example: true
 };
+
+// --------------------------------------------------------------------------------------------- //
+
 let grid: Answer[] = Array(6 * 5);
 Object.entries(answers).forEach(([_category, categoryAnswers], categoryIndex) => {
   categoryAnswers.forEach((answer, answerIndex) => {
@@ -207,15 +195,6 @@ Object.entries(answers).forEach(([_category, categoryAnswers], categoryIndex) =>
 });
 export { grid };
 
-const example: Answer = {
-  series: 'Example Series',
-  filename: 'example.mp4',
-  index: -1,
-  category: 'EXAMPLE',
-  points: 100,
-  example: true
-};
-
 export function getAnswer(index: number) {
   if (index === -1) {
     return example;
@@ -224,10 +203,3 @@ export function getAnswer(index: number) {
 }
 
 export const NUM_ANSWERS = grid.length + 1; // include example for state storage
-
-export enum AnswerState {
-  UNCOMPLETED = 'uncompleted',
-  COMPLETED_FAILED = 'completed-failed',
-  COMPLETED_GUESSED = 'completed-guessed',
-  COMPLETED_GUESSED_BONUS = 'completed-guessed-bonus'
-}

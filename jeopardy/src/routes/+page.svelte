@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import { AnswerState, NUM_ANSWERS, answerCategories, getCategoryTitle, grid } from '$lib/data';
+  import { NUM_ANSWERS, getCategoryTitle, grid } from '$lib/data';
+  import { AnswerState, answerCategories } from '$lib/types';
   import { categoriesRevealed, gameState, scores } from '$lib/stores';
   import AnswerTile from './AnswerTile.svelte';
 

@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { AnswerState, getAnswer, getCategoryTitle } from '$lib/data';
+  import { getAnswer, getCategoryTitle } from '$lib/data';
   import { onMount } from 'svelte';
   import type { PageData } from './$types';
   import { gameState } from '$lib/stores';
+  import { AnswerState } from '$lib/types';
 
   export let data: PageData;
 
