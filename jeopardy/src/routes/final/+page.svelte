@@ -58,7 +58,5 @@
 </div>
 
 <div class="question">
-  <p>How many rolls will it take me to c6 Furina?</p>
-
-  <p>(Expected value: 677.25)</p>
+  <p>(Question)</p>
 </div>
