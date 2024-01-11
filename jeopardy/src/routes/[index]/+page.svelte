@@ -189,7 +189,7 @@
 
       .bonus-indicator {
         position: absolute;
-        right: -30px;
+        right: -40px;
         top: -10px;
         font-size: 28px;
         font-weight: 700;
@@ -259,7 +259,7 @@
     <span class="separator">-</span>
     <h2 class="points">{answer.points}</h2>
     {#if bonusAvailable}
-      <span class="bonus-indicator">x2</span>
+      <span class="bonus-indicator">x1.5</span>
     {/if}
   </div>
 
