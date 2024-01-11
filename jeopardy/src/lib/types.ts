@@ -17,10 +17,16 @@ export const answerCategories: AnswerCategory[] = [
 
 export type Category = AnswerCategory | 'EXAMPLE';
 
+export enum SongSource {
+  OPENING,
+  ENDING,
+  MOVIE
+}
+
 export interface AnswerDefinition {
   series: string;
   filename: string;
-  ed?: boolean;
+  source?: SongSource;
 }
 
 export type Answer = AnswerDefinition & {

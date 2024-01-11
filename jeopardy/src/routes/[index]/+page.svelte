@@ -3,7 +3,7 @@
   import { onMount } from 'svelte';
   import type { PageData } from './$types';
   import { gameState } from '$lib/stores';
-  import { AnswerState } from '$lib/types';
+  import { AnswerState, SongSource } from '$lib/types';
 
   export let data: PageData;
 
@@ -199,16 +199,17 @@
         transform: rotate(30deg);
       }
 
-      .ed-indicator {
+      .source-indicator {
         position: absolute;
         bottom: 12px;
-        left: -52px;
+        left: -16px;
         padding: 2px 8px;
         font-size: 18px;
         font-weight: 700;
         font-variant: small-caps;
         background-color: rgb(154, 67, 198);
         border-radius: 8px;
+        transform: translateX(-100%);
       }
     }
 
@@ -253,8 +254,10 @@
 
 <div class="title-container">
   <div class="category-title title">
-    {#if answer.ed}
-      <span class="ed-indicator">ED</span>
+    {#if answer.source === SongSource.ENDING}
+      <span class="source-indicator">ED</span>
+    {:else if answer.source === SongSource.MOVIE}
+      <span class="source-indicator">MOVIE</span>
     {/if}
     <h2 class="category">{@html getCategoryTitle(answer.category)}</h2>
     <span class="separator">-</span>
