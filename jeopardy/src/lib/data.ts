@@ -1,58 +1,42 @@
-enum Category {
-  I,
-  NO,
-  RI,
-  MI,
-  NA,
-  SE
+enum AnswerCategory {
+  CATEGORY_1,
+  CATEGORY_2,
+  CATEGORY_3,
+  CATEGORY_4,
+  CATEGORY_5,
+  CATEGORY_6
 }
 
-export const categories: Category[] = [
-  Category.I,
-  Category.NO,
-  Category.RI,
-  Category.MI,
-  Category.NA,
-  Category.SE
+type Category = AnswerCategory | 'EXAMPLE';
+
+export const answerCategories: AnswerCategory[] = [
+  AnswerCategory.CATEGORY_1,
+  AnswerCategory.CATEGORY_2,
+  AnswerCategory.CATEGORY_3,
+  AnswerCategory.CATEGORY_4,
+  AnswerCategory.CATEGORY_5,
+  AnswerCategory.CATEGORY_6
 ];
 
-export function getCategoryTitle(category: Category | string): string {
+export function getCategoryTitle(category: Category): string {
   switch (category) {
-    case Category.I:
-      return '<span class="inori">I</span>n another world with my Pixel 8 Pro on sale now for $999';
-    case Category.NO:
-      return "Don't judge an anime by its opening covers";
-    case Category.RI:
-      return '<span class="inori">Ri</span>zz is so stupid they call it Deen/stay night';
-    case Category.MI:
-      return '<span class="inori">Mi</span>croplastic memories';
-    case Category.NA:
-      return '<span class="inori">Na</span>rcotics';
-    case Category.SE:
-      return '<span class="inori">Se</span>asonear worm';
+    case AnswerCategory.CATEGORY_1:
+      return 'Category 1';
+    case AnswerCategory.CATEGORY_2:
+      return 'Category 2';
+    case AnswerCategory.CATEGORY_3:
+      return 'Category 3';
+    case AnswerCategory.CATEGORY_4:
+      return 'Category 4';
+    case AnswerCategory.CATEGORY_5:
+      return 'Category 5';
+    case AnswerCategory.CATEGORY_6:
+      return 'Category 6';
     case 'EXAMPLE':
       return 'Bingo free space';
     default:
       return '';
   }
-  // switch (category) {
-  //   case Category.I:
-  //     return 'Category 1';
-  //   case Category.NO:
-  //     return 'Category 2';
-  //   case Category.RI:
-  //     return 'Category 3';
-  //   case Category.MI:
-  //     return 'Category 4';
-  //   case Category.NA:
-  //     return 'Category 5';
-  //   case Category.SE:
-  //     return 'Category 6';
-  //   case 'EXAMPLE':
-  //     return 'Bingo free space';
-  //   default:
-  //     return '';
-  // }
 }
 
 interface AnswerDefinition {
@@ -61,7 +45,7 @@ interface AnswerDefinition {
   ed?: boolean;
 }
 const answers: {
-  [key in Category]: [
+  [key in AnswerCategory]: [
     AnswerDefinition,
     AnswerDefinition,
     AnswerDefinition,
@@ -69,159 +53,154 @@ const answers: {
     AnswerDefinition
   ];
 } = {
-  [Category.I]: [
+  [AnswerCategory.CATEGORY_1]: [
     {
-      series: 'Re:ZERO -Starting Life in Another World-',
-      filename: 'zero.mp4'
+      series: 'Category 1 100',
+      filename: '1_100.mp4'
     },
     {
-      series: 'ISEKAI QUARTET',
-      filename: 'quartet.mp4'
+      series: 'Category 1 200',
+      filename: '1_200.mp4'
     },
     {
-      series: 'The Eminence in Shadow',
-      filename: 'eminence_ed.mp4',
-      ed: true
+      series: 'Category 1 300',
+      filename: '1_300.mp4'
     },
     {
-      series: 'Re:CREATORS',
-      filename: 'creators.mp4'
+      series: 'Category 1 400',
+      filename: '1_400.mp4'
     },
     {
-      series: 'How a Realist Hero Rebuilt the Kingdom',
-      filename: 'realist.mp4'
+      series: 'Category 1 500',
+      filename: '1_500.mp4'
     }
   ],
-  [Category.NO]: [
+  [AnswerCategory.CATEGORY_2]: [
     {
-      series: "Ao-chan Can't Study!",
-      filename: 'ao.mp4'
+      series: 'Category 2 100',
+      filename: '2_100.mp4'
     },
     {
-      series: 'Domestic Girlfriend',
-      filename: 'domestic.mp4'
+      series: 'Category 2 200',
+      filename: '2_200.mp4'
     },
     {
-      series: "Shikimori's Not Just a Cutie",
-      filename: 'shikimori.mp4'
+      series: 'Category 2 300',
+      filename: '2_300.mp4'
     },
     {
-      series: 'ASSASSINS PRIDE',
-      filename: 'assassins.mp4'
+      series: 'Category 2 400',
+      filename: '2_400.mp4'
     },
     {
-      series: 'Black Summoner',
-      filename: 'summoner.mp4'
+      series: 'Category 2 500',
+      filename: '2_500.mp4'
     }
   ],
-  [Category.RI]: [
+  [AnswerCategory.CATEGORY_3]: [
     {
-      series: 'takt op.Destiny',
-      filename: 'takt.mp4'
+      series: 'Category 3 100',
+      filename: '3_100.mp4'
     },
     {
-      series: 'My Next Life as a Villainess: All Routes Lead to Doom!',
-      filename: 'villainess.mp4'
+      series: 'Category 3 200',
+      filename: '3_200.mp4'
     },
     {
-      series: 'My Love Story with Yamada-kun at Lv999',
-      filename: 'yamada_ed.mp4',
-      ed: true
+      series: 'Category 3 300',
+      filename: '3_300.mp4'
     },
     {
-      series: 'Is It Wrong to Try to Pick Up Girls in a Dungeon? IV Part 2',
-      filename: 'dungeon.mp4'
+      series: 'Category 3 400',
+      filename: '3_400.mp4'
     },
     {
-      series: 'Princess Connect! Re:Dive Season 2',
-      filename: 'princess.mp4'
+      series: 'Category 3 500',
+      filename: '3_500.mp4'
     }
   ],
-  [Category.MI]: [
+  [AnswerCategory.CATEGORY_4]: [
     {
-      series: 'Gabriel DropOut',
-      filename: 'gab_ed.mp4',
-      ed: true
+      series: 'Category 4 100',
+      filename: '4_100.mp4'
     },
     {
-      series: "Girls' Last Tour",
-      filename: 'tour_op.mp4'
+      series: 'Category 4 200',
+      filename: '4_200.mp4'
     },
     {
-      series: 'Aharen-san wa Hakarenai',
-      filename: 'aharen.mp4'
+      series: 'Category 4 300',
+      filename: '4_300.mp4'
     },
     {
-      series: 'Is the Order a Rabbit?',
-      filename: 'rabbit.mp4'
+      series: 'Category 4 400',
+      filename: '4_400.mp4'
     },
     {
-      series: 'Actually, I Am',
-      filename: 'actually.mp4'
+      series: 'Category 4 500',
+      filename: '4_500.mp4'
     }
   ],
-  [Category.NA]: [
+  [AnswerCategory.CATEGORY_5]: [
     {
-      series: 'The Quintessential Quintuplets',
-      filename: 'quints_ed.mp4',
-      ed: true
+      series: 'Category 5 100',
+      filename: '5_100.mp4'
     },
     {
-      series: 'Sleepy Princess in the Demon Castle',
-      filename: 'sleepy.mp4'
+      series: 'Category 5 200',
+      filename: '5_200.mp4'
     },
     {
-      series: 'Spy Classroom',
-      filename: 'spy.mp4'
+      series: 'Category 5 300',
+      filename: '5_300.mp4'
     },
     {
-      series: "Osamake: Romcom Where The Childhood Friend Won't Lose",
-      filename: 'osamake.mp4'
+      series: 'Category 5 400',
+      filename: '5_400.mp4'
     },
     {
-      series: 'No Guns Life',
-      filename: 'guns.mp4'
+      series: 'Category 5 500',
+      filename: '5_500.mp4'
     }
   ],
-  [Category.SE]: [
+  [AnswerCategory.CATEGORY_6]: [
     {
-      series: 'Your lie in April',
-      filename: 'april.mp4'
+      series: 'Category 6 100',
+      filename: '6_100.mp4'
     },
     {
-      series: "Masamune-kun's Revenge",
-      filename: 'masamune.mp4'
+      series: 'Category 6 200',
+      filename: '6_200.mp4'
     },
     {
-      series: 'The Case Study of Vanitas',
-      filename: 'vanitas.mp4'
+      series: 'Category 6 300',
+      filename: '6_300.mp4'
     },
     {
-      series: 'A Place Further Than the Universe',
-      filename: 'universe.mp4'
+      series: 'Category 6 400',
+      filename: '6_400.mp4'
     },
     {
-      series: 'Dead Mount Death Play',
-      filename: 'dead_ed.mp4',
-      ed: true
+      series: 'Category 6 500',
+      filename: '6_500.mp4'
     }
   ]
 };
 
 export type Answer = AnswerDefinition & {
   index: number;
-  category: Category | string;
+  category: Category;
   points: number;
   example?: boolean;
 };
 let grid: Answer[] = Array(6 * 5);
-Object.entries(answers).forEach(([category, categoryAnswers], categoryIndex) => {
+Object.entries(answers).forEach(([_category, categoryAnswers], categoryIndex) => {
   categoryAnswers.forEach((answer, answerIndex) => {
     let index = answerIndex * 6 + categoryIndex;
     grid[index] = {
       ...answer,
       index: index,
-      category: categories[categoryIndex],
+      category: answerCategories[categoryIndex],
       points: answerIndex * 100 + 100
     };
   });
@@ -229,8 +208,8 @@ Object.entries(answers).forEach(([category, categoryAnswers], categoryIndex) => 
 export { grid };
 
 const example: Answer = {
-  series: 'Rascal Does Not Dream of Bunny Girl Senpai',
-  filename: 'bgs_op.mp4',
+  series: 'Example Series',
+  filename: 'example.mp4',
   index: -1,
   category: 'EXAMPLE',
   points: 100,

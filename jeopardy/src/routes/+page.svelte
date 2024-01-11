@@ -1,10 +1,8 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import { AnswerState, NUM_ANSWERS, categories, getCategoryTitle, grid } from '$lib/data';
+  import { AnswerState, NUM_ANSWERS, answerCategories, getCategoryTitle, grid } from '$lib/data';
   import { categoriesRevealed, gameState, scores } from '$lib/stores';
   import AnswerTile from './AnswerTile.svelte';
-
-  let inoriRevealed = false;
 
   function handleKeyUp(event: KeyboardEvent) {
     if (event.target && (event.target as any).tagName !== 'BODY') {
@@ -26,9 +24,6 @@
           scores.set('');
           categoriesRevealed.set(false);
         }
-        break;
-      case 'I':
-        inoriRevealed = !inoriRevealed;
         break;
       default:
         break;
@@ -69,23 +64,14 @@
       }
     }
   }
-
-  :global(.inori) {
-    margin-top: 40px;
-    transition: color 0.5s;
-
-    .inoriRevealed > & {
-      color: rgb(207, 36, 36);
-    }
-  }
 </style>
 
 <svelte:window on:keyup={handleKeyUp} />
 
 <div class="categories grid">
-  {#each categories as category, i}
+  {#each answerCategories as category, i}
     <div class="category tile">
-      <h2 class:inoriRevealed>
+      <h2>
         {#if $categoriesRevealed}
           {@html getCategoryTitle(category)}
         {:else}
