@@ -182,10 +182,11 @@ const example: Answer = {
 
 // --------------------------------------------------------------------------------------------- //
 
-let grid: Answer[] = Array(6 * 5);
+const NUM_CATEGORIES = answerCategories.length;
+let grid: Answer[] = Array(NUM_CATEGORIES * 5);
 Object.entries(answers).forEach(([_category, categoryAnswers], categoryIndex) => {
   categoryAnswers.forEach((answer, answerIndex) => {
-    let index = answerIndex * 6 + categoryIndex;
+    let index = answerIndex * NUM_CATEGORIES + categoryIndex;
     grid[index] = {
       ...answer,
       index: index,

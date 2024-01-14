@@ -20,12 +20,14 @@
     (AnswerState.UNCOMPLETED && !startedPlayingFull);
 
   onMount(() => {
-    const VOLUME = 0.2;
+    const GLOBAL_VOLUME = 0.2;
+    let volumeMultiplier = answer.volume ?? 1;
+    let volume = Math.min(GLOBAL_VOLUME * volumeMultiplier, 1);
     // const VOLUME = 1;
     shortVideo = document.getElementById('short') as HTMLMediaElement;
-    shortVideo.volume = VOLUME;
+    shortVideo.volume = volume;
     fullVideo = document.getElementById('full') as HTMLMediaElement;
-    fullVideo.volume = VOLUME;
+    fullVideo.volume = volume;
   });
 
   function playFull() {

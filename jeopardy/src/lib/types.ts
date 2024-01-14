@@ -6,14 +6,9 @@ export enum AnswerCategory {
   CATEGORY_5,
   CATEGORY_6
 }
-export const answerCategories: AnswerCategory[] = [
-  AnswerCategory.CATEGORY_1,
-  AnswerCategory.CATEGORY_2,
-  AnswerCategory.CATEGORY_3,
-  AnswerCategory.CATEGORY_4,
-  AnswerCategory.CATEGORY_5,
-  AnswerCategory.CATEGORY_6
-];
+export const answerCategories: AnswerCategory[] = Object.values(AnswerCategory).filter(
+  (v) => typeof v === 'number'
+) as AnswerCategory[];
 
 export type Category = AnswerCategory | 'EXAMPLE';
 
@@ -28,6 +23,7 @@ export interface AnswerDefinition {
   series: string;
   filename: string;
   source?: SongSource;
+  volume?: number;
 }
 
 export type Answer = AnswerDefinition & {
