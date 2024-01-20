@@ -5,6 +5,8 @@
   import { categoriesRevealed, gameState, scores } from '$lib/stores';
   import AnswerTile from './AnswerTile.svelte';
 
+  let inoriRevealed = false;
+
   function handleKeyUp(event: KeyboardEvent) {
     if (event.target && (event.target as any).tagName !== 'BODY') {
       return;
@@ -21,6 +23,9 @@
         break;
       case '\\':
         goto('/final');
+        break;
+      case 'I':
+        inoriRevealed = !inoriRevealed;
         break;
       case 'R':
         if (confirm('Reset?')) {
@@ -68,6 +73,15 @@
       }
     }
   }
+
+  :global(.inori) {
+    margin-top: 40px;
+    transition: color 0.5s;
+
+    .inoriRevealed > & {
+      color: rgb(207, 36, 36);
+    }
+  }
 </style>
 
 <svelte:window on:keyup={handleKeyUp} />
@@ -75,7 +89,7 @@
 <div class="categories grid">
   {#each answerCategories as category, i}
     <div class="category tile">
-      <h2>
+      <h2 class:inoriRevealed>
         {#if $categoriesRevealed}
           {@html getCategoryTitle(category)}
         {:else}

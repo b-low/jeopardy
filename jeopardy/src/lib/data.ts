@@ -10,17 +10,17 @@ import {
 export function getCategoryTitle(category: Category): string {
   switch (category) {
     case AnswerCategory.CATEGORY_1:
-      return 'Category 1';
+      return '<span class="inori">I</span>n another world with my Pixel 8 Pro on sale now for $999';
     case AnswerCategory.CATEGORY_2:
-      return 'Category 2';
+      return "Don't judge an anime by its opening covers";
     case AnswerCategory.CATEGORY_3:
-      return 'Category 3';
+      return '<span class="inori">Ri</span>zz is so stupid they call it Deen/stay night';
     case AnswerCategory.CATEGORY_4:
-      return 'Category 4';
+      return '<span class="inori">Mi</span>croplastic memories';
     case AnswerCategory.CATEGORY_5:
-      return 'Category 5';
+      return '<span class="inori">Na</span>rcotics';
     case AnswerCategory.CATEGORY_6:
-      return 'Category 6';
+      return '<span class="inori">Se</span>asonear worm';
     case 'EXAMPLE':
       return 'Bingo free space';
     default:
@@ -39,145 +39,152 @@ const answers: {
 } = {
   [AnswerCategory.CATEGORY_1]: [
     {
-      series: 'Category 1 100',
-      filename: '1_100.mp4'
+      series: 'Re:ZERO -Starting Life in Another World-',
+      filename: 'zero.mp4'
     },
     {
-      series: 'Category 1 200',
-      filename: '1_200.mp4'
+      series: 'ISEKAI QUARTET',
+      filename: 'quartet.mp4'
     },
     {
-      series: 'Category 1 300',
-      filename: '1_300.mp4'
+      series: 'The Eminence in Shadow',
+      filename: 'eminence_ed.mp4',
+      source: SongSource.ENDING
     },
     {
-      series: 'Category 1 400',
-      filename: '1_400.mp4'
+      series: 'Re:CREATORS',
+      filename: 'creators.mp4'
     },
     {
-      series: 'Category 1 500',
-      filename: '1_500.mp4'
+      series: 'How a Realist Hero Rebuilt the Kingdom',
+      filename: 'realist.mp4'
     }
   ],
   [AnswerCategory.CATEGORY_2]: [
     {
-      series: 'Category 2 100',
-      filename: '2_100.mp4'
+      series: "Ao-chan Can't Study!",
+      filename: 'ao.mp4'
     },
     {
-      series: 'Category 2 200',
-      filename: '2_200.mp4'
+      series: 'Domestic Girlfriend',
+      filename: 'domestic.mp4'
     },
     {
-      series: 'Category 2 300',
-      filename: '2_300.mp4'
+      series: "Shikimori's Not Just a Cutie",
+      filename: 'shikimori.mp4'
     },
     {
-      series: 'Category 2 400',
-      filename: '2_400.mp4'
+      series: 'ASSASSINS PRIDE',
+      filename: 'assassins.mp4'
     },
     {
-      series: 'Category 2 500',
-      filename: '2_500.mp4'
+      series: 'Black Summoner',
+      filename: 'summoner.mp4'
     }
   ],
   [AnswerCategory.CATEGORY_3]: [
     {
-      series: 'Category 3 100',
-      filename: '3_100.mp4'
+      series: 'takt op.Destiny',
+      filename: 'takt.mp4'
     },
     {
-      series: 'Category 3 200',
-      filename: '3_200.mp4'
+      series: 'My Next Life as a Villainess: All Routes Lead to Doom!',
+      filename: 'villainess.mp4'
     },
     {
-      series: 'Category 3 300',
-      filename: '3_300.mp4'
+      series: 'My Love Story with Yamada-kun at Lv999',
+      filename: 'yamada_ed.mp4',
+      source: SongSource.ENDING
     },
     {
-      series: 'Category 3 400',
-      filename: '3_400.mp4'
+      series: 'Is It Wrong to Try to Pick Up Girls in a Dungeon? IV Part 2',
+      filename: 'dungeon.mp4'
     },
     {
-      series: 'Category 3 500',
-      filename: '3_500.mp4'
+      series: 'Princess Connect! Re:Dive Season 2',
+      filename: 'princess.mp4'
     }
   ],
   [AnswerCategory.CATEGORY_4]: [
     {
-      series: 'Category 4 100',
-      filename: '4_100.mp4'
+      series: 'Gabriel DropOut',
+      filename: 'gab_ed.mp4',
+      source: SongSource.ENDING
     },
     {
-      series: 'Category 4 200',
-      filename: '4_200.mp4'
+      series: "Girls' Last Tour",
+      filename: 'tour_op.mp4'
     },
     {
-      series: 'Category 4 300',
-      filename: '4_300.mp4'
+      series: 'Aharen-san wa Hakarenai',
+      filename: 'aharen.mp4'
     },
     {
-      series: 'Category 4 400',
-      filename: '4_400.mp4'
+      series: 'Is the Order a Rabbit?',
+      filename: 'rabbit.mp4'
     },
     {
-      series: 'Category 4 500',
-      filename: '4_500.mp4'
+      series: 'Actually, I Am',
+      filename: 'actually.mp4'
     }
   ],
   [AnswerCategory.CATEGORY_5]: [
     {
-      series: 'Category 5 100',
-      filename: '5_100.mp4'
+      series: 'The Quintessential Quintuplets',
+      filename: 'quints_ed.mp4',
+      source: SongSource.ENDING
     },
     {
-      series: 'Category 5 200',
-      filename: '5_200.mp4'
+      series: 'Sleepy Princess in the Demon Castle',
+      filename: 'sleepy.mp4'
     },
     {
-      series: 'Category 5 300',
-      filename: '5_300.mp4'
+      series: 'Spy Classroom',
+      filename: 'spy.mp4'
     },
     {
-      series: 'Category 5 400',
-      filename: '5_400.mp4'
+      series: "Osamake: Romcom Where The Childhood Friend Won't Lose",
+      filename: 'osamake.mp4'
     },
     {
-      series: 'Category 5 500',
-      filename: '5_500.mp4'
+      series: 'No Guns Life',
+      filename: 'guns.mp4'
     }
   ],
   [AnswerCategory.CATEGORY_6]: [
     {
-      series: 'Category 6 100',
-      filename: '6_100.mp4'
+      series: 'Your lie in April',
+      filename: 'april.mp4'
     },
     {
-      series: 'Category 6 200',
-      filename: '6_200.mp4'
+      series: "Masamune-kun's Revenge",
+      filename: 'masamune.mp4'
     },
     {
-      series: 'Category 6 300',
-      filename: '6_300.mp4'
+      series: 'The Case Study of Vanitas',
+      filename: 'vanitas.mp4'
     },
     {
-      series: 'Category 6 400',
-      filename: '6_400.mp4'
+      series: 'A Place Further Than the Universe',
+      filename: 'universe.mp4'
     },
     {
-      series: 'Category 6 500',
-      filename: '6_500.mp4'
+      series: 'Dead Mount Death Play',
+      filename: 'dead_ed.mp4',
+      source: SongSource.ENDING
     }
   ]
 };
 
 const example: Answer = {
-  series: 'Example Series',
-  filename: 'example.mp4',
+  series: 'Kaguya-sama: Love is War',
+  filename: 'example_kaguya.mp4',
   index: -1,
   category: 'EXAMPLE',
   points: 100,
-  example: true
+  example: true,
+  volume: 1.5,
+  source: SongSource.ENDING
 };
 
 // --------------------------------------------------------------------------------------------- //
