@@ -21,9 +21,9 @@
 
   onMount(() => {
     const GLOBAL_VOLUME = 0.2;
+    // const GLOBAL_VOLUME = 1;
     let volumeMultiplier = answer.volume ?? 1;
     let volume = Math.min(GLOBAL_VOLUME * volumeMultiplier, 1);
-    // const VOLUME = 1;
     shortVideo = document.getElementById('short') as HTMLMediaElement;
     shortVideo.volume = volume;
     fullVideo = document.getElementById('full') as HTMLMediaElement;
@@ -237,15 +237,17 @@
     border-radius: 24px;
     overflow: hidden;
     width: 1280px;
-    height: 720px;
+    max-height: 720px;
     box-shadow: 0 0 10px 5px rgba(25, 25, 25, 0.71);
 
     &.revealed {
-      display: block;
+      display: flex;
     }
   }
 
   video {
+    flex: 1;
+    object-fit: cover;
     width: 100%;
   }
 </style>
@@ -274,7 +276,7 @@
 
 <div class="video-mask" class:revealed>
   <!-- svelte-ignore a11y-media-has-caption -->
-  <video id="short" src={shortUrl} hidden></video>
+  <video id="short" src={shortUrl} hidden preload="auto"></video>
   <!-- svelte-ignore a11y-media-has-caption -->
   <video id="full" src={fullUrl} controls></video>
 </div>
