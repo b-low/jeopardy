@@ -39,7 +39,7 @@
   .grid {
     display: grid;
     margin: auto;
-    grid-template-columns: repeat(6, 280px);
+    grid-template-columns: repeat(8, 240px);
     justify-content: center;
     justify-items: center;
     gap: 40px;
@@ -60,6 +60,7 @@
     align-items: end;
 
     .category {
+      margin-top: 40px;
       padding: 25px 0;
 
       h2 {

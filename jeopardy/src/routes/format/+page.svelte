@@ -111,5 +111,12 @@
     </li>
     <li>No take-backsies once you put your name in the queue.</li>
     <li>The last correct guesser chooses the next song.</li>
+    <li>Prize distribution:</li>
+    <ul class="prize-list">
+      <li>1st place - $20</li>
+      <li>2st place - $10</li>
+      <li>3st place - $4.13</li>
+    </ul>
+    <li>None of the answers are Sword Art Online.</li>
   </ul>
 </div>

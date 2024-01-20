@@ -4,7 +4,9 @@ export enum AnswerCategory {
   CATEGORY_3,
   CATEGORY_4,
   CATEGORY_5,
-  CATEGORY_6
+  CATEGORY_6,
+  CATEGORY_7,
+  CATEGORY_8
 }
 export const answerCategories: AnswerCategory[] = Object.values(AnswerCategory).filter(
   (v) => typeof v === 'number'
