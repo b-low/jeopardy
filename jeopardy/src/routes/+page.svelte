@@ -16,6 +16,9 @@
       case 'e':
         goto('/-1');
         break;
+      case 'f':
+        goto('/format');
+        break;
       case '\\':
         goto('/final');
         break;
