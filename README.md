@@ -1,4 +1,16 @@
-# Anime music jeopardy
+# (Anime) (Music) Jeopardy
+
+Jeopardy with a bonus round. Made with anime music in mind but could be used for anything with videos.
+
+<img src="jeopardy/showcase/categories.png" width="350" title="categories">
+<img src="jeopardy/showcase/music_bonus.png" width="350" title="bonus">
+<img src="jeopardy/showcase/music_fail.png" width="350" title="fail">
+
+## IMPORTANT
+
+This web app was made for personal use but I've provided these instructions in case other people want to use it. No further support will be provided.
+
+Feel free to use and/or fork but please credit me and do not make money off of it.
 
 ## Installation
 
