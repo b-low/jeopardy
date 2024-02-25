@@ -12,7 +12,7 @@ export const answerCategories: AnswerCategory[] = Object.values(AnswerCategory).
 
 export type Category = AnswerCategory | 'EXAMPLE';
 
-export enum SongSource {
+export enum MusicSource {
   OPENING = 'OP',
   ENDING = 'ED',
   MOVIE = 'MOVIE',
@@ -22,7 +22,7 @@ export enum SongSource {
 export interface AnswerDefinition {
   series: string;
   filename: string;
-  source?: SongSource;
+  source?: MusicSource;
   volume?: number;
 }
 

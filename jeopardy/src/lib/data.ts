@@ -4,7 +4,7 @@ import {
   type AnswerDefinition,
   type Category,
   answerCategories,
-  SongSource
+  MusicSource
 } from './types';
 
 export function getCategoryTitle(category: Category): string {
@@ -177,7 +177,9 @@ const example: Answer = {
   index: -1,
   category: 'EXAMPLE',
   points: 100,
-  example: true
+  example: true,
+  source: MusicSource.ENDING,
+  volume: 1.2
 };
 
 // --------------------------------------------------------------------------------------------- //

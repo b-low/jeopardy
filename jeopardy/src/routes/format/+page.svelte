@@ -96,7 +96,7 @@
       </ul>
       <li><b>Regular Phase</b></li>
       <ul>
-        <li>The full (tv-size) song will be played.</li>
+        <li>The full (tv-size) music will be played.</li>
         <li>
           Correct guesses will receive points while incorrect guesses will not receive a deduction
           of points.
@@ -104,12 +104,12 @@
       </ul>
     </ol>
     <li>
-      You may only guess once per song. This means if you guess incorrectly in the <b
+      You may only guess once per music. This means if you guess incorrectly in the <b
         >Bonus Phase</b
       >
       you cannot guess in the <b>Regular Phase</b>.
     </li>
     <li>No take-backsies once you put your name in the queue.</li>
-    <li>The last correct guesser chooses the next song.</li>
+    <li>The last correct guesser chooses the next music.</li>
   </ul>
 </div>

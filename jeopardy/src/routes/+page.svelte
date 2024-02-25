@@ -10,14 +10,14 @@
       return;
     }
     switch (event.key) {
-      case 'c':
-        categoriesRevealed.set(!$categoriesRevealed);
+      case 'f':
+        goto('/format');
         break;
       case 'e':
         goto('/-1');
         break;
-      case 'f':
-        goto('/format');
+      case 'c':
+        categoriesRevealed.set(!$categoriesRevealed);
         break;
       case '\\':
         goto('/final');

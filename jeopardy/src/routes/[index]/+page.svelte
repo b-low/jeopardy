@@ -3,7 +3,7 @@
   import { onMount } from 'svelte';
   import type { PageData } from './$types';
   import { gameState } from '$lib/stores';
-  import { AnswerState, SongSource } from '$lib/types';
+  import { AnswerState, MusicSource } from '$lib/types';
 
   export let data: PageData;
 
@@ -258,7 +258,7 @@
 
 <div class="title-container">
   <div class="category-title title">
-    {#if answer.source && answer.source !== SongSource.OPENING}
+    {#if answer.source && answer.source !== MusicSource.OPENING}
       <span class="source-indicator">{answer.source}</span>
     {/if}
     <h2 class="category">{@html getCategoryTitle(answer.category)}</h2>
